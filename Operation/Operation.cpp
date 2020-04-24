@@ -36,17 +36,25 @@ void showMenu()
     system("echo.");
     cout << "※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※" << endl;
     cout << "※                                                                                    ※" << endl;
-    cout << "※                        欢迎您使用小学四则运算自动生成程序                          ※" << endl;
+    cout << "※                   欢迎您使用小学四则运算自动生成程序                               ※" << endl;
+    cout << "※                                                                                    ※" << endl;
+    cout << "※                                                                                    ※" << endl;
+    cout << "※                             version： 1.0                                          ※" << endl;
     cout << "※                                                                                    ※" << endl;
     cout << "※                                                                                    ※" << endl;
     cout << "※                                                                                    ※" << endl;
-    cout << "※                        请您按照步骤来生成四则运算练习题：                          ※" << endl;
     cout << "※                                                                                    ※" << endl;
-    cout << "※                        第1步：请设置题目数量 <1-100>                               ※" << endl;
-    cout << "※                        第2步：请设置最大数 <1-1000>                                ※" << endl;
-    cout << "※                        第3步：请选择是否有小数                                     ※" << endl;
-    cout << "※                        第4步：请选择是否有括号                                     ※" << endl;
-    cout << "※                        第5步：请选择是否打印到文件                                 ※" << endl;
+    cout << "※                                                                                    ※" << endl;
+    cout << "※                                                                                    ※" << endl;
+    cout << "※                                                                                    ※" << endl;
+    cout << "※                                                                                    ※" << endl;
+    cout << "※                   请您按照步骤来生成四则运算练习题：                               ※" << endl;
+    cout << "※                                                                                    ※" << endl;
+    cout << "※                   第1步：请设置题目数量 <1-100>                                    ※" << endl;
+    cout << "※                   第2步：请设置最大数 <1-1000>                                     ※" << endl;
+    cout << "※                   第3步：请选择是否有小数                                          ※" << endl;
+    cout << "※                   第4步：请选择是否有括号                                          ※" << endl;
+    cout << "※                   第5步：请选择是否打印到文件                                      ※" << endl;
     cout << "※                                                                                    ※" << endl;
     cout << "※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※" << endl;
     system(" echo.");
@@ -151,10 +159,10 @@ void Arithmetic_Output_Screen()
         int number4 = rand() % Arithmetic_max;
 
         /*随机生成四个小数*/
-        float number5 = (float)rand() / (RAND_MAX/ Arithmetic_max);
-        float number6 = (float)rand() / (RAND_MAX / Arithmetic_max);
-        float number7 = (float)rand() / (RAND_MAX / Arithmetic_max);
-        float number8 = (float)rand() / (RAND_MAX / Arithmetic_max);
+        float number5 = (float)rand() / Arithmetic_max;
+        float number6 = (float)rand() / Arithmetic_max;
+        float number7 = (float)rand() / Arithmetic_max;
+        float number8 = (float)rand() / Arithmetic_max;
 
         /*随机生成三个运算符*/
         int operation1 = rand() % Arithmetic_operation;
@@ -209,7 +217,7 @@ void Arithmetic_Output_File()
         char* dt = ctime(&now);
         tm* gmtm = gmtime(&now);
         dt = asctime(gmtm);
-        fprintf(fp, "                                       生成日期和时间：%s \n", dt);
+        fprintf(fp, "                                                UTC 日期和时间：%s \n", dt);
 
         for (int i = 0; i < Arithmetic_number; ++i)
         {
@@ -220,10 +228,10 @@ void Arithmetic_Output_File()
             int number4 = rand() % Arithmetic_max;
 
             /*随机生成四个小数*/
-            float number5 = (float)rand() / (RAND_MAX / Arithmetic_max);
-            float number6 = (float)rand() / (RAND_MAX / Arithmetic_max);
-            float number7 = (float)rand() / (RAND_MAX / Arithmetic_max);
-            float number8 = (float)rand() / (RAND_MAX / Arithmetic_max);
+            float number5 = (float)rand() / Arithmetic_max;
+            float number6 = (float)rand() / Arithmetic_max;
+            float number7 = (float)rand() / Arithmetic_max;
+            float number8 = (float)rand() / Arithmetic_max;
 
             /*随机生成三个运算符*/
             int operation1 = rand() % Arithmetic_operation;
@@ -241,12 +249,12 @@ void Arithmetic_Output_File()
             {
                 if (Arithmetic_ifbrackets)   //判断是否有括号
                 {
-                    fprintf(fp, "NO. %2d :   %c %.2f %c %.2f %c %c %.2f %c %.2f = \n", i, cur_barckets1, number5, cur_operation1, number6, cur_barckets2, cur_operation2, number7, cur_operation3, number8);
+                    fprintf(fp, "NO. %2d : %c %.2f %c %.2f %c %c %.2f %c %.2f = \n", i, cur_barckets1, number5, cur_operation1, number6, cur_barckets2, cur_operation2, number7, cur_operation3, number8);
                     //fprint( << "NO." << i << " : "<< cur_barckets1 << number5 << " " << cur_operation1 << " " << number6 << cur_barckets2 << " " << cur_operation2 << " " << number7 << " " << cur_operation3 << " " << number8 << "=" << endl;
                 }
                 else
                 {
-                    fprintf(fp, "NO. %2d :   %.2f %c %.2f %c %.2f %c %.2f = \n", i, number5, cur_operation1, number6, cur_operation2, number7, cur_operation3, number8);
+                    fprintf(fp, "NO. %2d : %.2f %c %.2f %c %.2f %c %.2f = \n", i, number5, cur_operation1, number6, cur_operation2, number7, cur_operation3, number8);
                     //fprint( << "NO." << i << " : "<< number5 << " " << cur_operation1 << " " << number6 << " " << cur_operation2 << " " << number7 << " " << cur_operation3 << " " << number8 << "=" << endl;
                 }
             }
@@ -254,12 +262,12 @@ void Arithmetic_Output_File()
             {
                 if (Arithmetic_ifbrackets)
                 {
-                    fprintf(fp, "NO. %2d :   %c %d %c %d %c %c %d %c %d = \n", i, cur_barckets1, number1, cur_operation1, number2, cur_barckets2, cur_operation2, number3, cur_operation3, number4);
+                    fprintf(fp, "NO. %2d : %c %d %c %d %c %c %d %c %d = \n", i, cur_barckets1, number1, cur_operation1, number2, cur_barckets2, cur_operation2, number3, cur_operation3, number4);
                     //fprint( << "NO." << i << " : "<< cur_barckets1 << number1 << " " << cur_operation1 << " " << number2 << cur_barckets2 << " " << cur_operation2 << " " << number3 << " " << cur_operation3 << " " << number4 << "=" << endl;
                 }
                 else
                 {
-                    fprintf(fp, "NO. %2d :   %d %c %d %c %d %c %d = \n", i, number1, cur_operation1, number2, cur_operation2, number3, cur_operation3, number4);
+                    fprintf(fp, "NO. %2d : %d %c %d %c %d %c %d = \n", i, number1, cur_operation1, number2, cur_operation2, number3, cur_operation3, number4);
                     //fprint( << "NO." << i << " : "<< number1 << " " << cur_operation1 << " " << number2 << " " << cur_operation2 << " " << number3 << " " << cur_operation3 << " " << number4 << "=" << endl;
                 }
             }
@@ -270,20 +278,31 @@ void Arithmetic_Output_File()
         perror(FILE_PATH);
         exit(-1);
     }
-    fprintf(fp, "+-------------------------------------------------------------------------------------------+\n");
+    fprintf(fp, "+--------------------------------------------------------------------------------------+\n");
 
     fprintf(fp, "\n");
 }
 
-
+void getTime()
+{
+    system("cls");
+    system("echo.");
+    time_t now = time(0);
+    char* dt = ctime(&now);
+    tm* gmtm = gmtime(&now);
+    dt = asctime(gmtm);
+    cout << "UTC 日期和时间：" << dt << endl;
+    cout << "本地日期和时间：" << dt << endl;
+    system("echo.");
+}
 
 void showExit()
 {
     cout << "☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★" << endl;
     cout << "★                                                                                    ☆" << endl;
-    cout << "☆                          四则运算练习题已经成功生成！                              ★" << endl;
+    cout << "☆       恭喜您，四则运算练习题已经成功生成！                                         ★" << endl;
     cout << "★                                                                                    ☆" << endl;
-    cout << "☆                         谢谢您的使用，欢迎您下次再来！                             ★" << endl;
+    cout << "☆       谢谢您的使用，欢迎您下次再来！                                               ★" << endl;
     cout << "★                                                                                    ☆" << endl;
     cout << "☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★" << endl;
     cout << "请按确认键退出！" << endl;
@@ -293,13 +312,7 @@ void main()
 {
     showMenu();
     menu();
-    if(Arithmetic_iffile)
-    {
-        Arithmetic_Output_File();
-    }
-    else
-    {
-        Arithmetic_Output_Screen();
-    }  
+    Arithmetic_Output_Screen();
+    Arithmetic_Output_File();
     showExit();
 }
